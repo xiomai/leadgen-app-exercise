@@ -1,0 +1,23 @@
+{
+    "folders": [{
+            "path": "./AAG",
+            "name": "AAG"
+        },
+        {
+            "path": "./resources/js",
+            "name": "JS Assets"
+        },
+        {
+            "path": ".",
+            "name": "[[ROOT]]"
+        }
+    ],
+    "settings": {
+        "terminal.integrated.cwd": "/Users/alisongaleon/code/projects/laravel/app.leadgen",
+        "logFileHighlighter.customPatterns": [{
+            "pattern": "/Users/alisongaleon/code/projects/laravel/app.leadgen/AAG/*",
+            "foreground": "salmon",
+            "background": "gray"
+        }],
+    }
+}
