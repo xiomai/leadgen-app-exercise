@@ -14,7 +14,7 @@
             <li>Ut enim ad minim veniam, quis nostrud exercitation </li>
             <li>ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
         </ul>
-        <email-form-component/>
+        <email-form-component version="{{ $pageVersion->toJSON() }}"/>
     </div>
 </section>
 @endsection
@@ -42,5 +42,5 @@
 
 @section('headline-two')
     <h1>Laboris nisi ut <span class="underline--magical">aliquip</span> ex ea commodo <span class="underline--magical">consequat</span></h1>
-    <email-form-component/>
+    <email-form-component version="{{ $pageVersion->toJSON() }}"/>
 @endsection

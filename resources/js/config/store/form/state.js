@@ -1,4 +1,5 @@
 export default {
     email: null,
-    errorMessage: ""
+    errorMessage: "",
+    pageVersion: null
 };

@@ -10,7 +10,7 @@
                     <p>
                         Welcome to Lead Generation App Dashboard
                     </p>
-                    <a href="#" class="btn btn-primary">Manage Pages</a>
+                    <a href="{{ route('aag.pages.index') }}" class="btn btn-primary">View Pages</a>
                     <a href="{{ route('aag.pages.create') }}" class="btn btn-success">+ Create</a>
                     <div class="mt-5">
                         <a href="{{ route('aag.lp.exercise') }}" class="btn btn-secondary">Exercise LP - Lead Magnet</a>

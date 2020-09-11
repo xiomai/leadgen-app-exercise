@@ -3,11 +3,11 @@
 namespace AAG\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
+// use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ExerciseLeadMagnetMail extends Mailable implements ShouldQueue
+class ExerciseLeadMagnetMail extends Mailable
 {
     use Queueable, SerializesModels;
 

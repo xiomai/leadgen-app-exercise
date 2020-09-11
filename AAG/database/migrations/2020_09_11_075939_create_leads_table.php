@@ -16,7 +16,8 @@ class CreateLeadsTable extends Migration
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('page_id')->index();
-            $table->string('email')->unique();
+            $table->unsignedBigInteger('page_version_id')->index();
+            $table->string('email');
             $table->dateTime('email_sent_at')->nullable();
             $table->dateTime('email_opened_at')->nullable();
             $table->dateTime('attachment_opened_at')->nullable();
@@ -26,6 +27,9 @@ class CreateLeadsTable extends Migration
 
             $table->foreign('page_id')->references('id')
                 ->on('pages')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('page_version_id')->references('id')
+                ->on('page_versions')->onDelete('cascade')->onUpdate('cascade');
+            $table->unique(['page_id', 'email']);
         });
     }
 

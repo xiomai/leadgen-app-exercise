@@ -17,6 +17,7 @@ class CreatePageVersionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('page_id')->index();
             $table->text('cta_text');
+            $table->text('cta_text_color');
             $table->char('cta_button_color');
 
             $table->softDeletes();
