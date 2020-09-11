@@ -27,6 +27,8 @@ class AAGServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/config/aag.php', 'aag');
 
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+
         $this->app->register(AAGRouteServiceProvider::class);
     }
 }

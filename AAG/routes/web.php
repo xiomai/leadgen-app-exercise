@@ -16,11 +16,6 @@ Route::group(['prefix' => 'lp'], function () {
 
 Route::group(['prefix' => 'mail/preview'], function () {
     Route::get('exercise', function () {
-
-        $user = User::find(1);
-
-        Mail::to($user)->send(new AAG\Mail\ExerciseLeadMagnetMail());
-
         return new AAG\Mail\ExerciseLeadMagnetMail();
-    });
+    })->name('aag.email.leadmagnet.exercise.preview');
 });

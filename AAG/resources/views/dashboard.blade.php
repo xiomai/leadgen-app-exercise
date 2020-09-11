@@ -12,7 +12,10 @@
                     </p>
                     <a href="#" class="btn btn-primary">Manage Pages</a>
                     <a href="{{ route('aag.pages.create') }}" class="btn btn-success">+ Create</a>
-                    <a href="{{ route('aag.lp.exercise') }}" class="btn btn-info">Exercise LP - Lead Magnet</a>
+                    <div class="mt-5">
+                        <a href="{{ route('aag.lp.exercise') }}" class="btn btn-secondary">Exercise LP - Lead Magnet</a>
+                        <a href="{{ route('aag.email.leadmagnet.exercise.preview') }}" class="btn btn-secondary">LP - Lead Magnet Email Preview</a>
+                    </div>
                 </div>
             </div>
         </div>
