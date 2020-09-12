@@ -31,3 +31,12 @@ Route::group(['prefix' => 'mail/preview'], function () {
         return new AAG\Mail\ExerciseLeadMagnetMail($lead);
     })->name('aag.email.leadmagnet.exercise.preview');
 });
+
+Route::get('test', function () {
+    // $page = \AAG\Models\Page::withCount(['leadsEmailOpened', 'leadsAttachmentOpened'])->find(1);
+
+    // dd($page->toArray());
+    $page = \AAG\Models\Page::find(1);
+
+    dd($page->clickThroughRate);
+});

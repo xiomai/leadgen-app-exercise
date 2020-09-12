@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
             <div class="card-header">All Pages</div>
                 <div class="card-body">
@@ -14,6 +14,8 @@
                             <th scope="col">Title</th>
                             <th scope="col">Type</th>
                             <th scope="col">Leads</th>
+                            <th scope="col">Open Rate</th>
+                            <th scope="col">CT Rate</th>
                             <th scope="col">Versions</th>
                             <th scope="col">Actions</th>
                           </tr>
@@ -37,6 +39,8 @@
                                 </a>
                                 @endif
                             </td>
+                            <td>{{ $page->openRate['formatted'] }}<span class="badge badge-pill badge-light">{{ $page->openRate['opened'] }}</span></td>
+                            <td>{{ $page->clickThroughRate['formatted'] }}<span class="badge badge-pill badge-light">{{ $page->clickThroughRate['opened'] }}</span></td>
                             <td>{{ $page->versions_count  }}</td>
                             <td><a href="{{ route('aag.pages.show', [
                                 'page' => $page

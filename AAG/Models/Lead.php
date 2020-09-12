@@ -14,4 +14,14 @@ class Lead extends AAGBaseModel
     {
         return $this->hasOneThrough(Page::class, PageVersion::class);
     }
+
+    public function scopeEmailOpened($query)
+    {
+        $query->whereNotNull('email_opened_at');
+    }
+
+    public function scopeAttachmentOpened($query)
+    {
+        $query->whereNotNull('attachment_opened_at');
+    }
 }
