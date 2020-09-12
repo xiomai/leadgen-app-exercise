@@ -13,20 +13,9 @@
 </template>
 
 <script>
-import Vue from "vue";
-import VueSweetalert2 from "vue-sweetalert2";
 import { mapGetters, mapMutations, mapActions } from "vuex";
 import EventBus from "@/config/EventBus";
-import "sweetalert2/dist/sweetalert2.min.css";
-
-const options = {
-  confirmButtonColor: "#7f8ff4",
-  cancelButtonColor: "salmon",
-  showConfirmButton: false,
-  showCanelButton: false,
-};
-
-Vue.use(VueSweetalert2, options);
+import Swal from "@/config/modal/sweetalert2";
 
 export default {
   props: {
@@ -74,13 +63,28 @@ export default {
       }
     },
     thankYouAlert() {
-      this.$swal({
+      Swal.fire({
         icon: "success",
         title: "<strong>Thank you!</strong>",
-        html: `Please check your inbox (${this.email}) to download the list.`,
+        html: `Please check your inbox <span class="badge badge-pill badge-success">${this.email}</span> to download the list.`,
         footer:
           '<p>Share to your friends!</p><img style="margin: 0 0.5em;" src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-facebook-6.png" alt="Facebook 6" width="50" height="50"><img style="margin: 0 0.5em;" src="https://cdns.iconmonstr.com/wp-content/assets/preview/2012/240/iconmonstr-twitter-3.png" alt="Twitter 3" width="50" height="50"><img style="margin: 0 0.5em;" src="https://cdns.iconmonstr.com/wp-content/assets/preview/2016/240/iconmonstr-instagram-11.png" alt="Instagram 11" width="50" height="50"><img style="margin: 0 0.5em;" src="https://cdns.iconmonstr.com/wp-content/assets/preview/2012/240/iconmonstr-pinterest-1.png" alt="Pinterest 1" width="50" height="50">',
       });
+    },
+    showLoading(show = true) {
+      if (show) {
+        Swal.fire({
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+          onOpen() {
+            Swal.showLoading();
+          },
+        });
+        return;
+      }
+
+      Swal.close();
     },
   },
   created() {
@@ -90,6 +94,7 @@ export default {
     EventBus.$on("user-convert", (payload) =>
       this.handleUserConvertEvent(payload)
     );
+    EventBus.$on("show-loading-modal", (payload) => this.showLoading(payload));
   },
 };
 </script>

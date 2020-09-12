@@ -19,7 +19,7 @@ class PagesController extends AAGBaseController
 
     public function show(Page $page)
     {
-        $page->load('versions', 'version');
+        $page->load('versions');
 
         return view('AAG::pages.show')->with(compact('page'));
     }
