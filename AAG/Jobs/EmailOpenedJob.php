@@ -2,16 +2,14 @@
 
 namespace AAG\Jobs;
 
-use AAG\Mail\ExerciseLeadMagnetMail;
 use AAG\Models\Lead;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
 
-class SendLeadMagnetMailJob implements ShouldQueue
+class EmailOpenedJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -34,10 +32,11 @@ class SendLeadMagnetMailJob implements ShouldQueue
      */
     public function handle()
     {
+        if (!$this->lead->exists) return;
 
-        Mail::to($this->lead->email)->send(new ExerciseLeadMagnetMail($this->lead));
+        if ($this->lead->email_opened_at) return;
 
-        $this->lead->email_sent_at = now();
+        $this->lead->email_opened_at = now();
         $this->lead->save();
     }
 }

@@ -18,8 +18,16 @@ Route::group(['prefix' => 'lp'], function () {
     Route::get('exercise', 'LandingPagesController@exercise')->name('aag.lp.exercise');
 });
 
+Route::group(['prefix' => 'lp/image/attachment'], function () {
+    Route::get('appEmailLogo/{lead?}', 'ImageAttachmentController@appEmailLogo')->name('aag.lp.image.attachment.appEmailLogo');
+});
+Route::group(['prefix' => 'lp/file/attachment'], function () {
+    Route::get('leadMagnetExerciseAttachmentFile/{lead?}', 'FileAttachmentController@leadMagnetExerciseAttachmentFile')->name('aag.lp.file.attachment.leadMagnetExerciseAttachmentFile');
+});
+
 Route::group(['prefix' => 'mail/preview'], function () {
     Route::get('exercise', function () {
-        return new AAG\Mail\ExerciseLeadMagnetMail();
+        $lead = \AAG\Models\Lead::find(1);
+        return new AAG\Mail\ExerciseLeadMagnetMail($lead);
     })->name('aag.email.leadmagnet.exercise.preview');
 });

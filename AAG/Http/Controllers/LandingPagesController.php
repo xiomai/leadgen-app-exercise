@@ -7,6 +7,11 @@ use AAG\Models\Page;
 class LandingPagesController extends AAGBaseController
 {
 
+    public function __construct()
+    {
+        $this->middleware('web');
+    }
+
     public function exercise()
     {
         $page = Page::find(1);
