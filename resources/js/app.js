@@ -29,14 +29,6 @@ Vue.component(
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-import Vue from "vue";
-import VueSweetalert2 from "vue-sweetalert2";
-const options = {
-    confirmButtonColor: "#7f8ff4",
-    cancelButtonColor: "salmon"
-};
-import "sweetalert2/dist/sweetalert2.min.css";
-Vue.use(VueSweetalert2, options);
 
 import store from "./config/store";
 

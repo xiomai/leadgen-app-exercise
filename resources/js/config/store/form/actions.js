@@ -1,3 +1,5 @@
+import EventBus from "@/config/EventBus";
+
 export default {
     parseVersion({ commit }, version) {
         commit("SET_VERSION", version);
@@ -13,8 +15,7 @@ export default {
             const url = `/api/v1/lp/${pageVersion.id}/convert`;
 
             const res = await axios.post(url, getters.conversionParams);
-            // this.$swal("hi!");
-            console.log(res);
+            EventBus.$emit("user-convert", res);
             commit("RESET_ERRORS");
         } catch (error) {
             console.log(error.message);
