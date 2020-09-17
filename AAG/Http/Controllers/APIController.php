@@ -2,12 +2,21 @@
 
 namespace AAG\Http\Controllers;
 
+use AAG\Http\Resources\PageResource;
 use AAG\Jobs\SendLeadMagnetMailJob;
+use AAG\Models\Page;
 use AAG\Models\PageVersion;
 use Illuminate\Http\Request;
 
 class APIController extends AAGAPIBaseController
 {
+
+    public function listLeads(Page $page)
+    {
+        $page->load('leads');
+
+        return new PageResource($page);
+    }
 
     public function handleConversion(Request $request, PageVersion $pageVersion)
     {
