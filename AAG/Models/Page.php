@@ -32,6 +32,22 @@ class Page extends AAGBaseModel
         return $this->leads()->attachmentOpened();
     }
 
+    public function getLeadsCountAttribute($value)
+    {
+
+        return $value ?? $this->leads_count  = $this->leads()->count();
+    }
+
+    public function getLeadsEmailOpenedCountAttribute($value)
+    {
+        return $value ?? $this->email_opened_count  = $this->leadsEmailOpened()->count();
+    }
+
+    public function getLeadsAttachmentOpenedCountAttribute($value)
+    {
+        return $value ?? $this->atachment_opened_count  = $this->leadsAttachmentOpened()->count();
+    }
+
     public function getShortenedTitleAttribute()
     {
         $shortenedTitle = strlen($this->title) > 30 ? substr($this->title, 0, 30) . "..." : $this->title;
