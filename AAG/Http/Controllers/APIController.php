@@ -31,7 +31,7 @@ class APIController extends AAGAPIBaseController
                 'page_id' => $pageVersion->page_id
             ]);
 
-            SendLeadMagnetMailJob::dispatchAfterResponse($lead);
+            SendLeadMagnetMailJob::dispatch($lead);
         } catch (\Throwable $th) {
 
             $throwCode    = $th->getCode();

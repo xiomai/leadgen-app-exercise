@@ -17,7 +17,7 @@ class ImageAttachmentController extends AAGBaseController
     {
         $storagePath = public_path('/images/leadgen-app-logo.png');
 
-        EmailOpenedJob::dispatchAfterResponse($lead);
+        EmailOpenedJob::dispatch($lead);
 
         return response()->file($storagePath);
     }

@@ -17,7 +17,7 @@ class FileAttachmentController extends AAGBaseController
     {
         $storagePath = public_path('/storage/downloads/cleaning-tips.pdf');
 
-        AttachmentOpenedJob::dispatchAfterResponse($lead);
+        AttachmentOpenedJob::dispatch($lead);
 
         return response()->file($storagePath);
     }
